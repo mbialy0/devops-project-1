@@ -52,7 +52,7 @@ resource "aws_security_group" "devops_sg" {
 resource "aws_instance" "devops_server" {
     ami = "ami-0b6c6ebed2801a5cb"
     instance_type = "t3.micro"
-    key_name = "devops-key"
+    key_name = "devops-project-1"
     vpc_security_group_ids = [aws_security_group.devops_sg.id]
 
     user_data = file("install_docker.sh")
@@ -61,4 +61,18 @@ resource "aws_instance" "devops_server" {
       Name = "DevOps-Flask-Server"
     }
   
+}
+
+resource "aws_eip" "devops_eip" {
+  instance = aws_instance.devops_server.id
+  domain = "vpc"
+
+  tags = {
+    Name = "DevOps-EIP"
+  }
+  
+}
+resource "aws_eip_association" "devops_eip_assoc" {
+  instance_id   = aws_instance.devops_server.id
+  allocation_id = aws_eip.devops_eip.id
 }
