@@ -104,7 +104,7 @@ Triggered on every push to the `main` branch:
 -Push image to DockerHub
 
 
-### Continuous Deployment (CD)
+## Continuous Deployment (CD)
 
 After a successful image push:
 
@@ -120,7 +120,7 @@ After a successful image push:
 
 Deployment is fully automated — no manual SSH access required.
 
-### 🔐 Security
+## 🔐 Security
 
 -SSH authentication using private key
 
@@ -132,7 +132,7 @@ Deployment is fully automated — no manual SSH access required.
 
 -Sensitive files excluded using `.gitignore`
 
-### 🧠 DevOps Concepts Demonstrated
+## 🧠 DevOps Concepts Demonstrated
 
 -Infrastructure as Code (Terraform)
 
